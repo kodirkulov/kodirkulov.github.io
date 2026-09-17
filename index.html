@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammadjon Qodirqulov — Portfolio</title>
+<meta name="description" content="Portfolio of Muhammadjon Qodirqulov — CS student at BMCC, Lavada Inc. data intern, and founder of YOL Education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F3EC;
+    --surface:#FFFFFF;
+    --ink:#161F38;
+    --muted:#586083;
+    --line:#CBD0C1;
+    --accent:#BE501C;
+    --grid: rgba(88,96,131,0.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#11151C;
+      --surface:#171D28;
+      --ink:#E9ECF6;
+      --muted:#9AA2BE;
+      --line:#323B4C;
+      --accent:#FF9159;
+      --grid: rgba(154,162,190,0.09);
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 28px),
+      var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    padding-inline:20px;
+    padding-block:56px 80px;
+  }
+  h1,h2,h3{font-family:'Archivo', ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0;}
+  a{color:var(--accent);}
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+
+  .page{max-width:760px; margin-inline:auto; display:flex; flex-direction:column; gap:64px;}
+
+  /* ---- Hero ---- */
+  .hero{display:flex; flex-direction:column; gap:18px;}
+  .hero .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--accent); display:flex; align-items:center; gap:10px;
+  }
+  .hero .tag::before{content:""; width:22px; height:1px; background:var(--accent);}
+  .hero h1{font-size:clamp(34px,7vw,58px); font-weight:900; line-height:1.02; letter-spacing:-0.01em;}
+  .hero .role{font-size:clamp(16px,2.6vw,19px); color:var(--muted); font-weight:500; max-width:46ch; line-height:1.5;}
+  .coords{
+    display:flex; flex-wrap:wrap; gap:8px 22px; font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    color:var(--muted); padding-top:6px; border-top:1px solid var(--line); margin-top:4px;
+  }
+  .coords span b{color:var(--ink); font-weight:500;}
+
+  /* ---- Section header (drafting callout) ---- */
+  .section{display:flex; flex-direction:column; gap:22px;}
+  .section-head{display:flex; align-items:baseline; gap:14px;}
+  .section-head .idx{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent);}
+  .section-head h2{font-size:22px; font-weight:800; white-space:nowrap;}
+  .section-head .rule{flex:1; height:1px; background:var(--line);}
+
+  p.lede{color:var(--muted); line-height:1.7; font-size:15.5px; max-width:62ch;}
+
+  /* ---- Timeline (experience / education) ---- */
+  .tl{display:flex; flex-direction:column;}
+  .tl-item{
+    display:grid; grid-template-columns:112px 20px 1fr; gap:0 18px; padding-block:20px;
+    border-top:1px solid var(--line);
+  }
+  .tl-item:last-child{border-bottom:1px solid var(--line);}
+  .tl-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); padding-top:3px;}
+  .tl-node{display:flex; justify-content:center;}
+  .tl-node::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); margin-top:7px;}
+  .tl-body h3{font-size:17px; font-weight:700;}
+  .tl-body .org{font-size:13.5px; color:var(--accent); font-weight:600; margin-top:2px;}
+  .tl-body p{color:var(--muted); font-size:14.5px; line-height:1.6; margin:8px 0 0;}
+  @media (max-width:520px){
+    .tl-item{grid-template-columns:20px 1fr;}
+    .tl-date{grid-column:1/-1; padding-top:0; order:-1;}
+    .tl-node{align-items:flex-start;}
+  }
+
+  /* ---- Programs / honors grid ---- */
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:560px){.grid2{grid-template-columns:1fr;}}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:3px;
+    padding:16px 18px; display:flex; flex-direction:column; gap:6px;
+  }
+  .card .when{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--accent); letter-spacing:.04em;}
+  .card .what{font-size:15px; font-weight:600;}
+  .card .role{font-size:13px; color:var(--muted);}
+
+  /* ---- Honors list ---- */
+  .honors{display:flex; flex-direction:column; gap:0;}
+  .honor{
+    display:flex; justify-content:space-between; gap:16px; align-items:baseline;
+    padding-block:14px; border-top:1px solid var(--line);
+  }
+  .honors .honor:last-child{border-bottom:1px solid var(--line);}
+  .honor .name{font-weight:600; font-size:15px;}
+  .honor .detail{color:var(--muted); font-size:13.5px;}
+  .honor .when{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); white-space:nowrap;}
+
+  /* ---- Skills ---- */
+  .skill-groups{display:flex; flex-direction:column; gap:18px;}
+  .skill-group .label{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:10px; display:block;
+  }
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:13.5px; font-weight:500; padding:6px 12px; border:1px solid var(--line);
+    border-radius:3px; background:var(--surface); color:var(--ink);
+  }
+
+  /* ---- Footer / contact ---- */
+  footer{
+    border-top:1px solid var(--line); padding-top:26px; display:flex; flex-direction:column; gap:14px;
+  }
+  footer .big{font-size:clamp(22px,4vw,30px); font-weight:800; font-family:'Archivo', sans-serif;}
+  footer .row{display:flex; flex-wrap:wrap; gap:8px 24px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted);}
+  footer .row a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);}
+  footer .row a:hover{border-color:var(--accent); color:var(--accent);}
+  .fine{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); opacity:.75;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="tag">Portfolio — Rev. 2026</div>
+    <h1>Muhammadjon<br>Qodirqulov</h1>
+    <p class="role">Computer Science student building software, data tooling, and a startup — moving between Brooklyn engineering internships and a self-started ed-tech platform for students in Uzbekistan.</p>
+    <div class="coords">
+      <span><b>Brooklyn, NY</b></span>
+      <span>from Jizzakh, Uzbekistan</span>
+      <span>kdrvnyc@gmail.com</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-head"><span class="idx">01</span><h2>About</h2><span class="rule"></span></div>
+    <p class="lede">Third-semester Computer Science student at Borough of Manhattan Community College, carrying a 3.94 GPA into coursework spanning calculus, advanced programming, and computer systems fundamentals. Before New York, a math-olympiad track at a STEM specialized school in Jizzakh, Uzbekistan — a 4.00 GPA and a national olympiad win. Now splitting time between a data internship at a Brooklyn facade-engineering firm and founding an education platform of his own, with Python, C++, and SQL as daily tools and Russian, Turkish, and Uzbek alongside English.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="idx">02</span><h2>Experience</h2><span class="rule"></span></div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-date">2026 —<br>In development</div>
+        <div class="tl-node"></div>
+        <div class="tl-body">
+          <h3>Founder &amp; Owner</h3>
+          <div class="org">YOL Education</div>
+          <p>Building an online education-consulting platform that teaches students to independently prepare their own U.S. college and visa applications — his first startup, starting with students in Uzbekistan.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jul – Aug<br>2 months</div>
+        <div class="tl-node"></div>
+        <div class="tl-body">
+          <h3>Data Internship</h3>
+          <div class="org">Lavada Inc. — Brooklyn, NY</div>
+          <p>Research, data analysis, reporting, and technical project support at a firm specializing in facade and building-envelope systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="idx">03</span><h2>Education</h2><span class="rule"></span></div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-date">Sep 2025 —<br>Present</div>
+        <div class="tl-node"></div>
+        <div class="tl-body">
+          <h3>Borough of Manhattan Community College</h3>
+          <div class="org">Computer Science — GPA 3.94 / 4.00</div>
+          <p>Third-semester student. Relevant coursework: Calculus II, Advanced Programming Techniques (CSC 211), Fundamentals of Computer Systems (CSC 215).</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sep 2019 —<br>May 2022</div>
+        <div class="tl-node"></div>
+        <div class="tl-body">
+          <h3>22nd STEM Specialized School</h3>
+          <div class="org">Jizzakh, Uzbekistan — GPA 4.00 / 4.00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="idx">04</span><h2>Programs &amp; Activities</h2><span class="rule"></span></div>
+    <div class="grid2">
+      <div class="card"><span class="when">Feb 2026</span><span class="what">Harvard HPAIR</span><span class="role">Delegate</span></div>
+      <div class="card"><span class="when">Jun 2026</span><span class="what">UN Open Source Week</span><span class="role">Participant</span></div>
+      <div class="card"><span class="when">Jun 2026</span><span class="what">UN Tech Over Hackathon</span><span class="role">Participant</span></div>
+      <div class="card"><span class="when">Dec 2025</span><span class="what">CUNY AI Innovation Challenge</span><span class="role">Innovator</span></div>
+      <div class="card"><span class="when">2026</span><span class="what">CUNY Spring Forward</span><span class="role">Program Participant</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="idx">05</span><h2>Honors &amp; Awards</h2><span class="rule"></span></div>
+    <div class="honors">
+      <div class="honor"><div><div class="name">Math Olympiad</div><div class="detail">One national win, three regional wins</div></div><div class="when">2019 – 2022</div></div>
+      <div class="honor"><div><div class="name">Dean's List</div><div class="detail">Borough of Manhattan Community College</div></div><div class="when">Ongoing</div></div>
+      <div class="honor"><div><div class="name">FLEX Semifinalist</div></div><div class="when">Dec 2022</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="idx">06</span><h2>Skills</h2><span class="rule"></span></div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <span class="label">Programming &amp; Data</span>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="label">Applications &amp; Graphics</span>
+        <div class="chips">
+          <span class="chip">Microsoft Word</span><span class="chip">Excel</span><span class="chip">PowerPoint</span><span class="chip">Adobe</span><span class="chip">Canva</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="label">Languages</span>
+        <div class="chips">
+          <span class="chip">Russian</span><span class="chip">Turkish</span><span class="chip">Uzbek</span><span class="chip">English</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="big">Let's talk.</div>
+    <div class="row">
+      <a href="mailto:kdrvnyc@gmail.com">kdrvnyc@gmail.com</a>
+      <span>Brooklyn, NY</span>
+    </div>
+    <div class="fine">Muhammadjon Qodirqulov · Computer Science, BMCC</div>
+  </footer>
+
+</div>
+</body>
+</html>
